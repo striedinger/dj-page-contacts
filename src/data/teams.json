@@ -4,6 +4,16 @@
     "email": "webplatformrequests@dowjones.com",
     "slack-channel": "building-blocks-pub"
   },
+  "wsj-video": {
+    "name": "WSJ Video Team",
+    "email": "wsjvideo@dowjones.com",
+    "slack-channel": "wsj-video"
+  },
+  "wsj-consumer-revenue": {
+    "name": "WSJ Consumer Revenue Team",
+    "email": "wsjconsumerrevenue@dowjones.com",
+    "slack-channel": "wsj-consumer-revenue"
+  },
   "wsj-storytelling": {
     "name": "WSJ Storytelling Team",
     "email": "storytelling@wsj.com",

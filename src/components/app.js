@@ -42,9 +42,9 @@ const App = () => {
   return (
     <div className="container">
       <h1>{name}</h1>
-      <h2>Teams</h2>
+      {teams.length > 0 && <h2>Teams</h2>}
       {teams.map((team, index) => <Team key={index} { ...team} />)}
-      <h2>Features</h2>
+      {features.length > 0 && <h2>Features</h2>}
       {features.map((feature, index) => <Feature key={index} tabId={tab.id} {...feature} />)}
     </div>
   );

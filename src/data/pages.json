@@ -8,6 +8,21 @@
         "name": "Market Data",
         "match": "#market-data",
         "team": "wsj-web"
+      },
+      {
+        "name": "Podcast Player",
+        "match": "#podcast-2",
+        "team": "wsj-video"
+      },
+      {
+        "name": "Video Center",
+        "match": "#video-center",
+        "team": "wsj-video"
+      },
+      {
+        "name": "Coupon Links",
+        "match": "#coupon-links",
+        "team": "wsj-consumer-revenue"
       }
     ]
   },

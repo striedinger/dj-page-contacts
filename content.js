@@ -15,6 +15,8 @@ chrome.runtime.onMessage.addListener((message) => {
       const { name: teamName, email: teamEmail, 'slack-channel': slackChannel } = team || {};
       const element = document.querySelector(features[i].match);
       if (element) {
+        // Needed for absolute positioning of ownership cards
+        element.style.position = 'relative';
         const html = `
           <div class="${CARD_CLASS}">
             <h3>${name}</h3>
