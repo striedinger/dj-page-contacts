@@ -1,0 +1,16 @@
+{
+  "name": "Dow Jones Page Contacts",
+  "version": "1.0",
+  "description": "Extension to view contact info for a certain page and its features",
+  "manifest_version": 2,
+  "permissions": ["declarativeContent", "activeTab"],
+  "web_accessible_resources": ["data/*.json"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

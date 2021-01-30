@@ -1,0 +1,19 @@
+[
+  {
+    "match": "^(https?://)?(www.)?wsj.com/?$",
+    "name": "Homepage",
+    "teams": ["wsj-web"],
+    "features": [
+      {
+        "name": "Market Data",
+        "match": "#market-data",
+        "team": "wsj-web"
+      }
+    ]
+  },
+  {
+    "match": "^(https?://)?(www.)?wsj.com/articles/.+",
+    "name": "Article Page",
+    "teams": ["wsj-web", "wsj-storytelling"]
+  }
+]

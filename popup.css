@@ -1,0 +1,29 @@
+body {
+  background-color: #f2f2f2;
+  min-width: 500px;
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 4px;
+  margin-bottom: 8px;
+}
+
+.card summary:hover {
+  cursor: pointer;
+}
+
+.card ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+}
+
+.card ul li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.card .content {
+  padding: 8px;
+}

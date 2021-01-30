@@ -1,0 +1,12 @@
+{
+  "wsj-web": {
+    "name": "WSJ Web Platform Team",
+    "email": "webplatformrequests@dowjones.com",
+    "slack-channel": "building-blocks-pub"
+  },
+  "wsj-storytelling": {
+    "name": "WSJ Storytelling Team",
+    "email": "storytelling@wsj.com",
+    "slack-channel": "story-components"
+  }
+}
