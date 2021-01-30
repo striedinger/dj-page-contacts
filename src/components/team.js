@@ -1,4 +1,7 @@
 import React from 'react';
+import { Icon } from 'react-icons-kit';
+import { envelope } from 'react-icons-kit/fa/envelope';
+import { slack } from 'react-icons-kit/fa/slack';
 
 const Team = ({ name, email, 'slack-channel': slackChannel }) => (
   <details className="card">
@@ -6,12 +9,12 @@ const Team = ({ name, email, 'slack-channel': slackChannel }) => (
     <ul>
       {email && (
         <li>
-          <a href={`mailto:${email}`}>{email}</a>
+          <Icon icon={envelope} /><a href={`mailto:${email}`}>{email}</a>
         </li>
       )}
       {slackChannel && (
         <li>
-          <a href={`https://dowjones.slack.com/channels/${slackChannel}`}>{`#${slackChannel}`}</a>
+          <Icon icon={slack} /><a href={`https://dowjones.slack.com/channels/${slackChannel}`}>{`#${slackChannel}`}</a>
         </li>
       )}
     </ul>

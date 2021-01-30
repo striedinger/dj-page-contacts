@@ -1,7 +1,9 @@
+const CARD_CLASS = 'dj-page-contacts-card';
+
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === 'inject') {
     // Clean all existing info cards
-    const elements = document.querySelectorAll('.dj-page-contacts-card');
+    const elements = document.querySelectorAll(`.${CARD_CLASS}`);
     for (let i=0;i<elements.length;i++) {
       const element = elements[i];
       element.parentNode.removeChild(element);
@@ -14,15 +16,22 @@ chrome.runtime.onMessage.addListener((message) => {
       const element = document.querySelector(features[i].match);
       if (element) {
         const html = `
-          <div class="dj-page-contacts-card">
-            <p><strong>${name}</strong></p>
-            <p><strong>Team: </strong>${teamName}</p>
+          <div class="${CARD_CLASS}">
+            <h3>${name}</h3>
+            <p>${teamName}</p>
             <p><strong>Email: </strong>${`<a href="mailto:${teamEmail}">${teamEmail}</a>`}</p>
             <p><strong>Slack: </strong>${`<a href="https://dowjones.slack.com/channels/${slackChannel}">#${slackChannel}</a>`}</p>
           </div>
         `;
         element.insertAdjacentHTML('beforeend', html);
       }
+    }
+  }
+  if (message.type === 'focus') {
+    const element = document.querySelector(message.match);
+    if (element) {
+      element.scrollIntoView();
+      element.focus();
     }
   }
 });

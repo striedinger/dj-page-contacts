@@ -24,6 +24,10 @@ body {
   margin-bottom: 8px;
 }
 
+.card ul li i {
+  margin-right: 8px;
+}
+
 .card .content {
   padding: 8px;
 }

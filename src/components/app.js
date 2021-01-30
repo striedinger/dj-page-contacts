@@ -45,7 +45,7 @@ const App = () => {
       <h2>Teams</h2>
       {teams.map((team, index) => <Team key={index} { ...team} />)}
       <h2>Features</h2>
-      {features.map((feature, index) => <Feature key={index} {...feature} />)}
+      {features.map((feature, index) => <Feature key={index} tabId={tab.id} {...feature} />)}
     </div>
   );
 };
