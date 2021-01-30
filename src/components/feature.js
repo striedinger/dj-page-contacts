@@ -3,9 +3,9 @@ import { Icon } from 'react-icons-kit';
 import { crosshairs } from 'react-icons-kit/fa/crosshairs';
 import Team from './team';
 
-const Feature = ({ id, name, match, tabId, team }) => {
+const Feature = ({ handleFocus, id, name, match, team }) => {
   const handleClick = () => {
-    chrome.tabs.sendMessage(tabId, { type: 'focus', match });
+    if (typeof handleFocus === 'function') handleFocus(match);
   };
   return (
     <details className="card">

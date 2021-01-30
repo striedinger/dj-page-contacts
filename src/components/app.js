@@ -36,6 +36,10 @@ const App = () => {
     };
   }, [page]);
 
+  const handleFocus = match => {
+    chrome.tabs.sendMessage(tab.id, { type: 'focus', match });
+  };
+
   if (!page) return <h1>Nothing to see here.</h1>;
   const { name, teams = [], features = [] } = page || {};
 
@@ -45,7 +49,7 @@ const App = () => {
       {teams.length > 0 && <h2>Teams</h2>}
       {teams.map((team, index) => <Team key={index} { ...team} />)}
       {features.length > 0 && <h2>Features</h2>}
-      {features.map((feature, index) => <Feature key={index} tabId={tab.id} {...feature} />)}
+      {features.map((feature, index) => <Feature key={index} handleFocus={handleFocus} {...feature} />)}
     </div>
   );
 };
