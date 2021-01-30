@@ -4,7 +4,6 @@
   "description": "Extension to view contact info for a certain page and its features",
   "manifest_version": 2,
   "permissions": ["declarativeContent", "activeTab"],
-  "web_accessible_resources": ["data/*.json"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
