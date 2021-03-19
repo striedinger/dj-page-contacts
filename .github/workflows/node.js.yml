@@ -31,4 +31,9 @@ jobs:
     - run: npm run zip
     - name: Chrome Addon Action
       uses: trmcnvn/chrome-addon@v2
+      with:
+        zip: release.zip
+        client-id: ${{ secrets.CHROME_CLIENT_ID }}
+        client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+        refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
