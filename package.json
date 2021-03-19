@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "webpack --watch",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\"",
+    "zip": "zip -r release.zip ./ -x node_modules\/\\* \\.git\/\\* \\.github\/\\*"
   },
   "author": "Hugo Striedinger",
   "license": "ISC",
