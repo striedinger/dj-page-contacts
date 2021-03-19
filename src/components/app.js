@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Team from './team';
 import Feature from './feature';
 import pages from '../data/pages.json';

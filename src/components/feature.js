@@ -1,4 +1,3 @@
-import React from 'react';
 import { Icon } from 'react-icons-kit';
 import { crosshairs } from 'react-icons-kit/fa/crosshairs';
 import Team from './team';

@@ -2,9 +2,15 @@ const path = require('path');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
-  entry: './src/index.js',
+  entry: {
+    bundle: {
+      import: path.join(__dirname, 'src', 'index.js'),
+      dependOn: 'vendor',
+    },
+    vendor: ['react', 'react-dom'],
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist/'),
     publicPath: '/dist/',
   },
@@ -16,5 +22,5 @@ module.exports = {
         exclude: /node_modules/,
       }
     ]
-  }
+  },
 };

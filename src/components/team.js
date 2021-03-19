@@ -1,4 +1,3 @@
-import React from 'react';
 import { Icon } from 'react-icons-kit';
 import { envelope } from 'react-icons-kit/fa/envelope';
 import { slack } from 'react-icons-kit/fa/slack';
