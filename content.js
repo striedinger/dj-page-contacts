@@ -10,7 +10,8 @@ chrome.runtime.onMessage.addListener((message) => {
     }
     // Add new info cards to existing page features
     const { features } = message;
-    for (let i=0;i<features.length;i++) {
+    const length = features.length;
+    for (let i=0;i<length;i++) {
       const { name, team } = features[i];
       const { name: teamName, email: teamEmail, 'slack-channel': slackChannel } = team || {};
       const element = document.querySelector(features[i].match);

@@ -8,8 +8,7 @@ chrome.runtime.onInstalled.addListener(async () => {
         });
       }),
       actions: [
-        new chrome.declarativeContent.RequestContentScript({ js: ['content.js'], css: ['styles.css'] }),
-        new chrome.declarativeContent.ShowPageAction()
+        new chrome.declarativeContent.ShowPageAction(),
       ]
     }]);
   });
