@@ -10,11 +10,13 @@ chrome.runtime.onMessage.addListener((message) => {
     }
     // Add new info cards to existing page features
     const { features } = message;
+    const validatedFeatures = [...features];
     const length = features.length;
     for (let i=0;i<length;i++) {
       const { name, team } = features[i];
       const { name: teamName, email: teamEmail, 'slack-channel': slackChannel } = team || {};
       const element = document.querySelector(features[i].match);
+      validatedFeatures[i].isPresent = !!element;
       if (element) {
         // Needed for absolute positioning of ownership cards
         element.style.position = 'relative';
@@ -29,6 +31,8 @@ chrome.runtime.onMessage.addListener((message) => {
         element.insertAdjacentHTML('beforeend', html);
       }
     }
+    // Sends list of features actually present in page
+    chrome.runtime.sendMessage({ type: 'validated-features', features: validatedFeatures });
   }
   if (message.type === 'focus') {
     const element = document.querySelector(message.match);

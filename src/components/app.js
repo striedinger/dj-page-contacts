@@ -22,26 +22,44 @@ const getActivePage = (url) => {
 const App = () => {
   const [tab, setTab] = useState(null);
   const [page, setPage] = useState(null);
+  const [features, setFeatures] = useState([]);
+
+  useState(() => {
+    if (chrome && chrome.runtime) {
+      chrome.runtime.onMessage.addListener((message) => {
+        if (message.type === 'validated-features') {
+          setFeatures([...message.features]);
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
-    chrome.tabs.query({ active: true }, ([tab]) => {
-      setTab(tab);
-      setPage(getActivePage(tab.url));
-    });
+    if (chrome && chrome.tabs) {
+      chrome.tabs.query({ active: true }, ([tab]) => {
+        setTab(tab);
+        setPage(getActivePage(tab.url));
+      });
+    }
   }, []);
 
   useEffect(() => {
     if (page && page.features && tab && tab.id) {
-      chrome.tabs.sendMessage(tab.id, { type: 'inject', features: page.features });
-    };
+      if (chrome && chrome.tabs) {
+        console.log('why???')
+        chrome.tabs.sendMessage(tab.id, { type: 'inject', features: page.features });
+      }
+    }
   }, [page]);
 
   const handleFocus = match => {
-    chrome.tabs.sendMessage(tab.id, { type: 'focus', match });
+    if (chrome && chrome.tabs) {
+      chrome.tabs.sendMessage(tab.id, { type: 'focus', match });
+    }
   };
 
   if (!page) return <h1>Nothing to see here.</h1>;
-  const { name, teams = [], features = [] } = page || {};
+  const { name, teams = [] } = page;
 
   return (
     <div className="container">
