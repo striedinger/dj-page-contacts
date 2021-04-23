@@ -36,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     if (chrome && chrome.tabs) {
-      chrome.tabs.query({ active: true }, ([tab]) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
         setTab(tab);
         setPage(getActivePage(tab.url));
       });

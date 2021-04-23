@@ -33,6 +33,9 @@ chrome.runtime.onMessage.addListener((message) => {
     }
     // Sends list of features actually present in page
     chrome.runtime.sendMessage({ type: 'validated-features', features: validatedFeatures });
+    // 
+    const articleId = document.querySelector('meta[name="article.id"]');
+    if (articleId) console.log(articleId.getAttribute('content'));
   }
   if (message.type === 'focus') {
     const element = document.querySelector(message.match);
