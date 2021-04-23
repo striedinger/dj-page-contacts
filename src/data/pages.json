@@ -1,6 +1,6 @@
 [
   {
-    "match": "^(https?://)?(www.)?wsj.com/?$",
+    "match": "^(https?://)?(www.)?wsj.com/?(\\?.+)?$",
     "name": "Homepage",
     "teams": ["wsj-web"],
     "features": [

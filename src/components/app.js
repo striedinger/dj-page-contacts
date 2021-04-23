@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Team from './team';
 import Feature from './feature';
+import Article from './article';
 import pages from '../data/pages.json';
 import teams from '../data/teams.json';
 
@@ -23,12 +24,16 @@ const App = () => {
   const [tab, setTab] = useState(null);
   const [page, setPage] = useState(null);
   const [features, setFeatures] = useState([]);
+  const [articleId, setArticleId] = useState(null);
 
   useState(() => {
     if (chrome && chrome.runtime) {
       chrome.runtime.onMessage.addListener((message) => {
         if (message.type === 'validated-features') {
           setFeatures([...message.features]);
+        }
+        if (message.type === 'article-id') {
+          setArticleId(message.articleId);
         }
       });
     }
@@ -63,6 +68,7 @@ const App = () => {
   return (
     <div className="container">
       <h1>{name}</h1>
+      {articleId && <Article articleId={articleId} />}
       {teams.length > 0 && <h2>Teams</h2>}
       {teams.map((team, index) => <Team key={index} { ...team} />)}
       {features.length > 0 && <h2>Features</h2>}

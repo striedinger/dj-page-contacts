@@ -31,11 +31,11 @@ chrome.runtime.onMessage.addListener((message) => {
         element.insertAdjacentHTML('beforeend', html);
       }
     }
+    // If on article page, send id to popup
+    const articleId = document.querySelector('meta[name="article.id"]');
+    if (articleId) chrome.runtime.sendMessage({ type: 'article-id', articleId: articleId.getAttribute('content') });
     // Sends list of features actually present in page
     chrome.runtime.sendMessage({ type: 'validated-features', features: validatedFeatures });
-    // 
-    const articleId = document.querySelector('meta[name="article.id"]');
-    if (articleId) console.log(articleId.getAttribute('content'));
   }
   if (message.type === 'focus') {
     const element = document.querySelector(message.match);
