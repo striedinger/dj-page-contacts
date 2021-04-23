@@ -6,7 +6,7 @@
     "dev": "webpack --watch",
     "build": "webpack",
     "test": "echo \"Error: no test specified\"",
-    "zip": "zip -r release.zip ./ -x node_modules\/\\* \\.git\/\\* \\.github\/\\*",
+    "zip": "zip -r release.zip ./ -x node_modules/\\* \\.git/\\* \\.github/\\*",
     "prepublish": "npm run build && npm run zip"
   },
   "author": "Hugo Striedinger",

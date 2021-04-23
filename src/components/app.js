@@ -4,7 +4,7 @@ import Feature from './feature';
 import pages from '../data/pages.json';
 import teams from '../data/teams.json';
 
-const getActivePage = (url) => {
+const getActivePage = (url = '') => {
   const page = pages.find(page => url.match(page.match));
   if (!page) return null;
   return {
@@ -46,7 +46,6 @@ const App = () => {
   useEffect(() => {
     if (page && page.features && tab && tab.id) {
       if (chrome && chrome.tabs) {
-        console.log('why???')
         chrome.tabs.sendMessage(tab.id, { type: 'inject', features: page.features });
       }
     }
