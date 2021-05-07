@@ -1,7 +1,7 @@
 [
   {
     "match": "^(https?://)?(www.)?wsj.com/?(\\?.+)?$",
-    "name": "Homepage",
+    "name": "WSJ Homepage",
     "teams": ["wsj-web"],
     "features": [
       {
@@ -28,7 +28,8 @@
   },
   {
     "match": "^(https?://)?(www.)?wsj.com/articles/.+",
-    "name": "Article Page",
-    "teams": ["wsj-web", "wsj-storytelling"]
+    "name": "WSJ Article Page",
+    "teams": ["wsj-web", "wsj-storytelling"],
+    "isArticle": true
   }
 ]

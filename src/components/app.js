@@ -24,7 +24,7 @@ const App = () => {
   const [tab, setTab] = useState(null);
   const [page, setPage] = useState(null);
   const [features, setFeatures] = useState([]);
-  const [articleId, setArticleId] = useState(null);
+  const [article, setArticle] = useState(null);
 
   useState(() => {
     if (chrome && chrome.runtime) {
@@ -33,7 +33,8 @@ const App = () => {
           setFeatures([...message.features]);
         }
         if (message.type === 'article-id') {
-          setArticleId(message.articleId);
+          const { articleId, env } = message;
+          setArticle({ articleId, env });
         }
       });
     }
@@ -49,16 +50,19 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (page && page.features && tab && tab.id) {
-      if (chrome && chrome.tabs) {
-        chrome.tabs.sendMessage(tab.id, { type: 'inject', features: page.features });
+    if (tab && tab.id) {
+      if (page && page.features) {
+        chrome && chrome.tabs && chrome.tabs.sendMessage(tab.id, { type: 'inject-features', features: page.features });
+      }
+      if (page && page.isArticle) {
+        chrome && chrome.tabs && chrome.tabs.sendMessage(tab.id, { type: 'get-article-id' });
       }
     }
   }, [page]);
 
   const handleFocus = match => {
     if (chrome && chrome.tabs) {
-      chrome.tabs.sendMessage(tab.id, { type: 'focus', match });
+      chrome.tabs.sendMessage(tab.id, { type: 'focus-feature', match });
     }
   };
 
@@ -68,7 +72,7 @@ const App = () => {
   return (
     <div className="container">
       <h1>{name}</h1>
-      {articleId && <Article articleId={articleId} />}
+      {article && <Article {...article} />}
       {teams.length > 0 && <h2>Teams</h2>}
       {teams.map((team, index) => <Team key={index} { ...team} />)}
       {features.length > 0 && <h2>Features</h2>}
